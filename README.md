@@ -71,7 +71,7 @@ Enum defined as config (config/constants.php)
     
     ...
 
-Helperに「g_num」という関数がある。
+Helper has a function called "g_num".
 
     // Get display string from number
     g_num('user_types', Constants::USER_TYPE_COMPANY);
