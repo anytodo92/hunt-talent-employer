@@ -1,0 +1,1229 @@
+<!doctype html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="keywords" content="@yield('meta_keywords', '人材紹介会社,求人募集,中途採用,SES,業務委託,フリーランスエージェント,プラットフォーム')">
+
+	<!-- CSRF Token -->
+	<meta name="csrf-token" content="{{ csrf_token() }}">
+
+	<title>inCulエージェント管理画面TOP</title>
+
+	<!-- Styles -->
+	<link href="libs/datapicker/css/datepicker.css" rel="stylesheet">
+	<link href="css/app.css" rel="stylesheet">
+	<link href="style.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.25/datatables.min.css"/>
+	<style>
+		.breadcrumb {text-align: center;box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);overflow: hidden;border-radius: 5px;counter-reset: flag;padding: unset !important;flex-wrap: unset !important;}.breadcrumb__step {cursor: pointer;white-space: nowrap;text-decoration: none;outline: none;display: block;float: left;font-size: 14px;font-weight: 500;line-height: 46px;padding: 0px 10px 0px 46px;position: relative;background: var(--breadcrumb-theme-2);color: var(--breadcrumb-theme-1);transition: background 0.5s;}.breadcrumb__step:first-child {padding-left: 26px;border-radius: 5px 0 0 5px;}.breadcrumb__step:first-child::before {left: 14px;}.breadcrumb__step:last-child {border-radius: 0 5px 5px 0;padding-right: 20px;}.breadcrumb__step:last-child::after {content: none;}.breadcrumb__step::after {overflow: hidden;content: \"\";position: absolute;top: 0;right: -23px;width: 46px;height: 46px;transform: scale(0.707) rotate(45deg);z-index: 1;border-radius: 0 3px 0 50px;background: var(--breadcrumb-theme-2);transition: background 0.5s;box-shadow: 6px -6px 0 6px var(--breadcrumb-theme-3);}.breadcrumb__step:hover, .breadcrumb__step--active, .breadcrumb__step:hover::after, .breadcrumb__step--active::after {background: var(--breadcrumb-theme-1);}.breadcrumb__step:hover, .breadcrumb__step--active {
+			color: var(--breadcrumb-theme-2);}.breadcrumb__step--disabled {background: #d8d8d86b;color: #2b7cbfa3;}.breadcrumb__step--disabled:after {background: #d8d8d86b;}.breadcrumb__step--disabled:hover, .breadcrumb__step--disabled:hover:after {background: #d8d8d86b;color: #2b7cbfa3;}"
+	</style>
+</head>
+<body class="is-collapsed">
+<div>
+	<div class="sidebar">
+		<div class="sidebar-inner">
+			<div class="sidebar-logo">
+				<div class="peers ai-c fxw-nw">
+					<div class="peer peer-greed">
+						<a class="sidebar-link td-n" href="#">
+							<div class="peers ai-c fxw-nw">
+								<div class="peer">
+									<div class="logo"><img src="assets/static/images/logo.png" alt=""></div>
+								</div>
+								<div class="peer peer-greed">
+									<!-- <h5 class="lh-1 mB-0 logo-text">{{ config('app.name') }}</h5> -->
+									<h5 class="lh-1 mB-0 logo-text">inCulエージェント</h5>
+								</div>
+							</div>
+						</a>
+					</div>
+					<div class="peer">
+						<div class="mobile-toggle sidebar-toggle"><a href="" class="td-n"><i class="ti-arrow-circle-left"></i></a></div>
+					</div>
+				</div>
+			</div>
+			<ul class="sidebar-menu scrollable pos-r ps">
+				<li class="nav-item mT-30 active"><a class="sidebar-link" href="#"><span class="icon-holder"><i class="c-blue-500 ti-home"></i> </span><span class="title">inCulエージェントTOP</span></a></li>
+				<li class="nav-item dropdown">
+					<a class="dropdown-toggle" href="javascript:void(0);">
+						<span class="icon-holder"><i class="c-brown-500 ti-briefcase"></i> </span>
+						<span class="title">求人管理</span> <span class="arrow"><i class="ti-angle-right"></i></span>
+					</a>
+					<ul class="dropdown-menu">
+						<li><a class="sidebar-link" href="#">求人一覧</a></li>
+						<li><a class="sidebar-link" href="#">新規人材紹介求人作成</a></li>
+						<li><a class="sidebar-link" href="#">新規業務委託案件作成</a></li>
+					</ul>
+				</li>
+				<li class="nav-item"><a class="sidebar-link" href="#"><span class="icon-holder"><i class="c-blue-500 ti-share"></i> </span><span class="title">人材紹介ー選考</span></a></li>
+				<li class="nav-item"><a class="sidebar-link" href="#"><span class="icon-holder"><i class="c-deep-orange-500 ti-share-alt"></i> </span><span class="title">業務委託ー選考</span></a></li>
+				<li class="nav-item">
+					<a class="sidebar-link" href="chat.html">
+						<div class="float-right">
+							<span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-10 pY-10 bgc-red-50 c-red-500 mT-10"></span>
+						</div>
+						<span class="icon-holder"><i class="c-deep-purple-500 ti-calendar"></i> </span><span class="title">カレンダー</span>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="sidebar-link" href="charts.html">
+						<div class="float-right">
+							<span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-10 pY-10 bgc-red-50 c-red-500 mT-10"></span>
+						</div>
+						<span class="icon-holder"><i class="c-indigo-500 ti-pencil-alt"></i> </span><span class="title">求人Q＆A</span>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="page-container">
+		<div class="header navbar">
+			<div class="header-container">
+				<ul class="nav-left">
+					<li><a id="sidebar-toggle" class="sidebar-toggle" href="javascript:void(0);"><i class="ti-menu"></i></a></li>
+				</ul>
+				<ul class="nav-right">
+					<li>
+						<a href="#"><u>総合管理TOPへ</u></a>
+					</li>
+					<li class="notifications dropdown"><span class="counter bgc-red">5</span><a href="" class="dropdown-toggle no-after" data-toggle="dropdown"><i class="ti-comment"></i></a>
+						<ul class="dropdown-menu">
+							<li class="pX-20 pY-15 bdB"><span class="fsz-sm fw-600 c-grey-900">チャット</span></li>
+							<li>
+								<ul class="ovY-a pos-r scrollable lis-n p-0 m-0 fsz-sm ps">
+								</ul>
+							</li>
+							<li class="pX-20 pY-15 ta-c bdT" style="display: none"><span><a href="" class="c-grey-600 cH-blue fsz-sm td-n">チャットボックスへ <i class="ti-angle-right fsz-xs mL-10"></i></a></span></li>
+						</ul>
+					</li>
+					<li class="notifications dropdown"><span class="counter bgc-red">3</span><a href="" class="dropdown-toggle no-after" data-toggle="dropdown"><i class="ti-check-box"></i></a>
+						<ul class="dropdown-menu">
+							<li class="pX-20 pY-15 bdB"><span class="fsz-sm fw-600 c-grey-900">Todo</span></li>
+							<li>
+								<ul class="ovY-a pos-r scrollable lis-n p-0 m-0 fsz-sm ps">
+								</ul>
+							</li>
+							<li class="pX-20 pY-15 ta-c bdT" style="display: none"><span><a href="" class="c-grey-600 cH-blue fsz-sm td-n">Todoへ <i class="ti-angle-right fsz-xs mL-10"></i></a></span></li>
+						</ul>
+					</li>
+					<li class="dropdown">
+						<a href="" class="dropdown-toggle no-after peers fxw-nw ai-c lh-1" data-toggle="dropdown">
+							<!-- <div class="peer mR-10"><img class="w-2r bdrs-50p" src="{{ $user->company_user->company->logo_url }}" alt=""></div> -->
+							<!-- <div class="peer mR-10"><img class="w-3r bdrs-40p" src="/assets/static/images/404.png" alt=""></div> -->
+							<div class="peer mR-10"><img class="w-3r bdrs-40p" src="" alt=""></div>
+							<div class="peer"><span class="fsz-sm c-grey-900">123</span></div>
+							<i class="ti-angle-right fsz-xs mL-10"></i>
+						</a>
+						<ul class="dropdown-menu fsz-sm">
+							<li><a href="" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700"><i class="ti-user mR-10"></i> <span>アカウント設定</span></a></li>
+							<li><a href="" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700"><i class="ti-notepad mR-10"></i> <span>よくある質問</span></a></li>
+							<li><a href="" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700"><i class="ti-email mR-10"></i> <span>お問い合わせ</span></a></li>
+							<li><a href="" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700"><i class="ti-settings mR-10"></i> <span>サポート</span></a></li>
+							<li role="separator" class="divider"></li>
+							<li><a href="/logout" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700"><i class="ti-power-off mR-10"></i> <span>ログアウト</span></a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<main class="main-content bgc-grey-100">
+			<small>
+				<a href="#">inCulエージェント管理画面TOP</a>
+			</small>
+			<div id="app" class="row">
+				<div class="col-md-6">
+					<div class="card mb-2">
+						<div class="card-body ta-c">
+							氏名氏名氏名　／　求人タイトル求人タイトル
+						</div>
+					</div>
+					<div class="card mb-2">
+						<div class="prompt--success">
+							<p class="text">1</p>
+						</div>
+						<div class="card-body">
+							<div class="prompt">
+								<p class="icon">!</p>
+								<p class="text">書類選考の結果を選択してください。<br>選考から〇日が経過しています。</p>
+							</div>
+							<div class="row mT-20 pX-10">
+								<button type="button" class="col mX-5 btn cur-p btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#selectNotAdoptedReason">不採用</button>
+								<button type="button" class="col mX-5 btn cur-p btn-primary btn-color" data-bs-toggle="modal" data-bs-target="#passSelectionModal">選考通過次の選考へ</button>
+								<button type="button" class="col mX-5 btn cur-p btn-primary btn-color">内定する</button>
+							</div>
+						</div>
+					</div>
+					<div class="card mb-2">
+						<div class="prompt--success">
+							<p class="text">2</p>
+						</div>
+						<div class="card-body">
+							<div class="prompt">
+								<p class="icon">!</p>
+								<p class="text">〇〇面接の候補日、及び面接詳細を設定してください。</p>
+							</div>
+							<div class="row mT-20 pX-10">
+								<button type="button" class="col mX-5 btn cur-p btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#offerScheduleModal">候補者に候補日を提示してもらう</button>
+								<button type="button" class="col mX-5 btn cur-p btn-primary btn-color" data-bs-toggle="modal" data-bs-target="#">候補日を提示する</button>
+							</div>
+						</div>
+					</div>
+					<div class="card mb-2">
+						<div class="prompt--success">
+							<p class="text">3</p>
+						</div>
+						<div class="card-body">
+							<p class="prompt prompt--info" style="white-space: normal;">
+								候補者からの日程調整の入力待ちです。<br>
+								日程が届くまで今しばらくお待ちください。
+							</p>
+						</div>
+					</div>
+					<div class="card mb-2">
+						<div class="prompt--success">
+							<p class="text">4</p>
+						</div>
+						<div class="card-body">
+							<p class="prompt prompt--info" style="white-space: normal;">
+								候補者へ提示した日程鯛整の回答待ちです。<br>
+								回答が届くまで今しばらくお待ちください。
+							</p>
+							<div style="margin-left: 30px;">
+								<p class="text"><br>提示した日程候補<br><br></p>
+								<p class="text" style="color: #2B7CBF;">
+									<em>4/2 金 13:00〜14:00</em><br>
+									<em>4/5 月 15:00〜16:00</em><br>
+									<em>4/5 月 15:00〜16:00</em>
+									<br><br>
+								</p>
+								<a class="link">>カレンダー（予定表）を確認する</a>
+							</div>
+						</div>
+					</div>
+
+					<div class="card mb-2">
+						<div class="prompt--success">
+							<p class="text">5</p>
+						</div>
+						<div class="card-body">
+							<div class="prompt">
+								<p class="icon">!</p>
+								<p class="text">面接の詳細を入力してください。</p>
+							</div>
+							<div class="row mT-20 pX-10">
+								<div class="col ta-c">
+									<button type="button" class="btn btn-primary btn-color cur-p" data-bs-toggle="modal" data-bs-target="#">面接の詳細を入力する</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="card mb-2">
+						<div class="prompt--success">
+							<p class="text">6</p>
+						</div>
+						<div class="card-body">
+							<div class="prompt">
+								<p class="icon">!</p>
+								<p class="text">〇〇面接の面接詳細および日程について設定してください。</p>
+							</div>
+							<div class="row mT-20 pX-10">
+								<div class="col ta-c">
+									<button type="button" class="btn btn-primary btn-color cur-p" data-bs-toggle="modal" data-bs-target="#passSelectionModal2">面接詳細と日程の設定</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="card mb-2">
+						<div class="prompt--success">
+							<p class="text">7</p>
+						</div>
+						<div class="card-body">
+							<div class="prompt prompt--success" style="white-space: normal;">
+								<span class="icon-holder"><i class="ti-face-smile"></i> </span>
+								<p class="text" style="line-height: 2;">
+									以下の日程で〇〇面接の日時が確定しました。<br>
+									<em>2021年1月1日 16:00 ～ 17:00</em>
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="card mb-2">
+						<div class="prompt--success">
+							<p class="text">8</p>
+						</div>
+						<div class="card-body">
+							<div class="prompt">
+								<p class="icon">!</p>
+								<p class="text">入社手続きを進めてください。<br>内定から〇日が経過しています。</p>
+							</div>
+							<div class="row mY-10">
+								<div class="col mX-15">
+									<p class="w-100 h-100 ta-c d-flex justify-content-center align-items-center">入社条件の調整や入社前の説明など転職者との面談が必要な場合</p>
+								</div>
+								<div class="col mX-15">
+									<p class="w-100 h-100 ta-c d-flex justify-content-center align-items-center bgc-blue-100">入社条件が決まっている場合</p>
+								</div>
+							</div>
+							<div class="row mY-10">
+								<div class="col mX-15">
+									<button type="button" class="mT-5 w-100 h-100 btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#issueScheduleModal">オファー面談をする<br>（日程を調整）</button>
+								</div>
+								<div class="col mX-15">
+									<button type="button" class="mT-5 w-100 h-100 btn btn-primary btn-color" data-bs-toggle="modal" data-bs-target="#joiningConditionModal">入社条件を提示する</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="card mb-2">
+						<div class="prompt--success">
+							<p class="text">9</p>
+						</div>
+						<div class="card-body">
+							<p class="prompt prompt--info" style="white-space: normal;">
+								提示した入社条件に対する候補者からの返答待ちです。<br>
+								返答があるまで今しばらくお待ちください。
+							</p>
+							<div class="icon-container"><i class="ti-face-smile"></i><span>提示した入社条件</span></div>
+							<div class="row mX-20 mY-20">
+								<p class="col-md">オファー金額（円）</p>
+								<div class="col-md">
+									<p>年収　3,000,000 円</p>
+								</div>
+							</div>
+							<div class="row mX-20 mY-20">
+								<p class="col-md">初日出勤日</p>
+								<div class="col-md">
+									<p>2021年 1月 1日</p>
+								</div>
+							</div>
+							<div class="row mX-20 mY-20">
+								<p class="col-md">返答期限</p>
+								<div class="col-md">
+									<p>2021年 1月 1日</p>
+								</div>
+							</div>
+							<div class="row mX-20 mY-20">
+								<p class="col-md">入社手続きに必要な書類</p>
+								<div class="col-md">
+									<p>〇〇〇〇〇〇〇.pdf<a class="mL-20" href="#"><i class="ti-new-window"></i></a></p>
+									<p>〇〇〇〇〇〇〇.pdf<a class="mL-20" href="#"><i class="ti-new-window"></i></a></p>
+									<p>〇〇〇〇〇〇〇.pdf<a class="mL-20" href="#"><i class="ti-new-window"></i></a></p>
+								</div>
+							</div>
+							<div class="row mT-20" style="height: 60px;">
+								<button type="button" class="col h-100 mX-15 btn cur-p btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#issueScheduleModal">オファー面談をする<br>（日程を調整）</button>
+								<button type="button" class="col h-100 mX-15 btn cur-p btn-outline-secondary">入社条件を変更する</button>
+							</div>
+						</div>
+					</div>
+					<div class="card mb-2">
+						<div class="prompt--success">
+							<p class="text">10</p>
+						</div>
+						<div class="card-body">
+							<p class="prompt prompt--info" style="white-space: normal;">
+								提示した入社条件に対する候補者からの返答待ちです。<br>
+								返答があるまで今しばらくお待ちください。
+							</p>
+							<div class="icon-container"><i class="ti-face-smile"></i><span>前回提示した入社条件と変更後の入社条件</span></div>
+							<div class="row mX-20 mY-20">
+								<p class="col-md">オファー金額（円）</p>
+								<div class="col-md">
+									<p>＜変更前＞年収 3,000,000 円</p>
+									<p class="text-primary">＜変更後＞年収 4,000,000 円</p>
+								</div>
+							</div>
+							<div class="row mX-20 mY-20">
+								<p class="col-md">初日出勤日</p>
+								<div class="col-md">
+									<p>2021年 1月 1日</p>
+								</div>
+							</div>
+							<div class="row mX-20 mY-20">
+								<p class="col-md">返答期限</p>
+								<div class="col-md">
+									<p>2021年 1月 1日</p>
+								</div>
+							</div>
+							<div class="row mX-20 mY-20">
+								<p class="col-md">入社手続きに必要な書類</p>
+								<div class="col-md">
+									<p>〇〇〇〇〇〇〇.pdf<a class="mL-20" href="#"><i class="ti-new-window"></i></a></p>
+									<p>＜変更前＞〇〇〇〇〇.pdf</p>
+									<p class="text-primary">＜変更後＞〇〇〇.pdf<a class="mL-20" href="#"><i class="ti-new-window"></i></a></p>
+									<p>〇〇〇〇〇〇〇.pdf<a class="mL-20" href="#"><i class="ti-new-window"></i></a></p>
+								</div>
+							</div>
+							<div class="row mT-20" style="height: 60px;">
+								<button type="button" class="col h-100 mX-15 btn cur-p btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#issueScheduleModal">オファー面談をする<br>（日程を調整）</button>
+								<button type="button" class="col h-100 mX-15 btn cur-p btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#joiningConditionModal">入社条件を変更する</button>
+							</div>
+						</div>
+					</div>
+					<div class="card mb-2">
+						<div class="prompt--success">
+							<p class="text">11</p>
+						</div>
+						<div class="card-body">
+							<div class="prompt">
+								<p class="icon">!</p>
+								<p class="text">提示した入社条件に対して、転職者から希望の条件が提示されました。<br>
+									確認後、ご回答をお願い致します。</p>
+							</div>
+							<div class="icon-container"><i class="ti-face-smile"></i><span>提示した入社条件</span></div>
+							<div class="row mX-20 mY-20">
+								<p class="col-md">オファー金額（円）</p>
+								<div class="col-md">
+									<p>年収　3,000,000 円</p>
+								</div>
+							</div>
+							<div class="row mX-20 mY-20">
+								<p class="col-md">初日出勤日</p>
+								<div class="col-md">
+									<p>2021年 1月 1日</p>
+								</div>
+							</div>
+							<div class="row mX-20 mY-20">
+								<p class="col-md">返答期限</p>
+								<div class="col-md">
+									<p>2021年 1月 1日</p>
+								</div>
+							</div>
+							<div class="row mX-20 mY-20">
+								<p class="col-md">入社手続きに必要な書類</p>
+								<div class="col-md">
+									<p>〇〇〇〇〇〇〇.pdf<a class="mL-20" href="#"><i class="ti-new-window"></i></a></p>
+									<p>〇〇〇〇〇〇〇.pdf<a class="mL-20" href="#"><i class="ti-new-window"></i></a></p>
+									<p>〇〇〇〇〇〇〇.pdf<a class="mL-20" href="#"><i class="ti-new-window"></i></a></p>
+								</div>
+							</div>
+							<div class="icon-container"><i class="ti-face-smile"></i><span>転職者が希望する入社条件</span></div>
+							<div class="row mX-20 mY-20">
+								<p class="col-md">希望年収（円）</p>
+								<div class="col-md">
+									<p>年収 4,000,000 円</p>
+								</div>
+							</div>
+							<div class="row mX-20 mY-20">
+								<p class="col-md">初日出勤日</p>
+								<div class="col-md">
+									<p>2021年 1月 1日</p>
+								</div>
+							</div>
+
+							<div class="row mT-20" style="height: 60px;">
+								<button type="button" class="col h-100 mX-15 btn cur-p btn-outline-secondary">不採用</button>
+								<button type="button" class="col h-100 mX-15 btn cur-p btn-primary btn-color" data-bs-toggle="modal" data-bs-target="#joiningConditionModal">入社条件を<br>再提案</button>
+								<button type="button" class="col h-100 mX-15 btn cur-p btn-primary btn-color">同意する<br>（採用決定）</button>
+							</div>
+						</div>
+					</div>
+					<div class="card mb-2">
+						<div class="prompt--success">
+							<p class="text">12</p>
+						</div>
+						<div class="card-body">
+							<div class="icon-container"><i class="ti-face-smile"></i><span>ご採用おめでとうございます！</span></div>
+							<p class="text mY-20">貴社の採用活動に微力ながらもお手伝い出来たことを大変光栄に思っております。
+								採用者の初日出勤に関しまして、以下のご対応をお願い致します。
+							</p>
+							<div class="prompt prompt--success" style="white-space: normal;">
+								<p class="icon">!</p>
+								<p class="text mY-10">
+									<em class="line-height-2">初日出勤の確認待ち</em><br>
+									<em class="line-height-2">初日出勤予定日：2021年 1月 1日</em>
+								</p>
+							</div>
+							<div class="row mT-20" style="height: 60px;">
+								<button type="button" class="col h-100 mX-15 btn cur-p btn-outline-secondary">出勤し<br>なかった</button>
+								<button type="button" class="col h-100 mX-15 btn cur-p btn-primary btn-color">出勤した</button>
+								<button type="button" class="col h-100 mX-15 btn cur-p btn-primary btn-color">入社日変更</button>
+							</div>
+						</div>
+					</div>
+					<div class="card mb-2">
+						<div class="prompt--success">
+							<p class="text">13</p>
+						</div>
+						<div class="card-body">
+							<div class="prompt prompt--success">
+								<p class="icon orange no-background">〇</p>
+								<p class="text mY-20"><em>入社確認済み：2021年 1月 1日</em></p>
+							</div>
+							<p class="text mY-20">※万一、この採用者が以下の返金規定の期限内に退職した場合は以下より人材紹介会社へ要請ください。</p>
+							<p class="text bgc-grey-200 pX-40 pY-20">【返済規定】<br>
+								１ヶ月以内：75％<br>
+								1ヶ月を超えて3ヶ月以内：50％<br>
+								<a class="link"  data-bs-toggle="modal" data-bs-target="#refundApplicationModal">>返金規定内で退職したため返金申請をする</a></p>
+						</div>
+					</div>
+					<div class="card mb-2">
+						<div class="card-title">
+							<span class="icon-holder pR-10"><i class="c-brown-500 ti-comment-alt"></i> </span>
+							<span class="title">選考の進捗状況</span>
+						</div>
+						<div class="card-body">
+							<div class="breadcrumb">
+								<span class="breadcrumb__step" href="#" data-id="1">書類選考</span>
+								<span class="breadcrumb__step" href="#" data-id="2">筆記、webテスト</span>
+								<span class="breadcrumb__step" href="#" data-id="3">１次面接</span>
+								<span class="breadcrumb__step breadcrumb__step--active" href="#" data-id="4">２次面接</span>
+								<span class="breadcrumb__step" href="#" data-id="5">３次面接</span>
+								<span class="breadcrumb__step" href="#" data-id="6">４次面接</span>
+								<span class="breadcrumb__step" href="#" data-id="7">５次面接</span>
+								<span class="breadcrumb__step" href="#" data-id="8">最終面接</span>
+								<span class="breadcrumb__step" href="#" data-id="9">内定</span>
+								<span class="breadcrumb__step" href="#" data-id="10">入社</span>
+								<span class="breadcrumb__step" href="#" data-id="11">退社(返金規定内)</span>
+							</div>
+							<div class="content">
+								<div class="row mX-0 mY-10">
+									<div class="col-md" style="max-width: 200px;">
+										<p class="mY-10">応募確定日</p>
+										<p class="mY-10">選考結果</p>
+									</div>
+									<div class="col-md">
+										<p class="mY-10">2021年3月23日（火）</p>
+										<p class="mY-10">ー</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="card mb-2 card__tabs">
+						<div class="card-body">
+							<ul class="nav nav-tabs" id="myTab" role="tablist">
+								<li class="nav-item" role="presentation">
+								  <button class="nav-link active" id="seeker-tab" data-bs-toggle="tab" data-bs-target="#seeker" type="button" role="tab" aria-controls="seeker" aria-selected="true">候補者情報</button>
+								</li>
+								<li class="nav-item" role="presentation">
+								  <button class="nav-link" id="job-tab" data-bs-toggle="tab" data-bs-target="#job" type="button" role="tab" aria-controls="job" aria-selected="false">職種職種職種<br>業界業界業界業界業界業界</button>
+								</li>
+							  </ul>
+							  <div class="tab-content" id="myTabContent">
+								<div class="tab-pane fade show active seeker-tab" id="seeker" role="tabpanel" aria-labelledby="seeker-tab">
+									<p class="fee-text">
+										紹介料：理論年収の〇〇〇〇<br>採用事務手数料：上記紹介料の20%（上限15万円）
+									</p>
+									<div class="profile">
+										<figure class="figure">
+											<img class="img" src="img/avatar1.png" alt="">
+										</figure>
+										<div class="name-group">
+											<p class="label">氏名</p>
+											<p class="first-name">ふりがなふりがな</p>
+											<p class="last-name">氏名氏名氏名氏名氏名</p>
+										</div>
+									</div>
+									<div class="attachment-group">
+										<p class="text bold">履歴書・職務経歴書・その他</p>
+										<div class="attachment">
+											<span class="icon-holder"><i class="c-brown-500 ti-notepad"></i></span>
+											<p class="file-name">ファイル名ファイル名<span class="file-date">2021/03/23 14:15</span></p>
+											<a href="#" class="link">
+												<i class="ti-new-window"></i>
+											</a>
+										</div>
+										<div class="attachment">
+											<span class="icon-holder"><i class="c-brown-500 ti-notepad"></i></span>
+											<p class="file-name">ファイル名ファイル名<span class="file-date">2021/03/23 14:15</span></p>
+											<a href="#" class="link">
+												<i class="ti-new-window"></i>
+											</a>
+										</div>
+										<div class="attachment">
+											<span class="icon-holder"><i class="c-brown-500 ti-notepad"></i></span>
+											<p class="file-name">ファイル名ファイル名<span class="file-date">2021/03/23 14:15</span></p>
+											<a href="#" class="link">
+												<i class="ti-new-window"></i>
+											</a>
+										</div>
+									</div>
+									<div class="profile-detail-group">
+										<p class="text bold">推薦状</p>
+										<div class="text-line">
+											<p class="line-head">氏名</p>
+											<span>:</span>
+											<p class="line-content">〇〇　〇〇（まるまる　まるまる）　様</p>
+										</div>
+										<div class="text-line">
+											<p class="line-head">生年月日</p>
+											<span>:</span>
+											<p class="line-content">1995年7月1日（24歳）</p>
+										</div>
+										<div class="text-line">
+											<p class="line-head">性別</p>
+											<span>:</span>
+											<p class="line-content">男性</p>
+										</div>
+										<div class="text-line">
+											<p class="line-head">住所</p>
+											<span>:</span>
+											<p class="line-content">東京都XX区XX １−１−１</p>
+										</div>
+										<div class="text-line">
+											<p class="line-head">最寄り駅</p>
+											<span>:</span>
+											<p class="line-content">〇〇線　〇〇駅</p>
+										</div>
+										<div class="text-line">
+											<p class="line-head">最終学歴</p>
+											<span>:</span>
+											<p class="line-content">〇〇大学卒業</p>
+										</div>
+									</div>
+									<div class="carousel-area">
+										<p class="content-head">【経歴概略】</p>
+										<p class="content">2016年3月〜2020年3月　〇〇パン株式会社<br>〜現在　　　　　　　　XX株式会社　所属</p>
+										<p class="content-head">【転職理由】</p>
+										<p>＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃
+											＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃
+											＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃
+											＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃
+											＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃
+											＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃</p>
+										<p class="content-head">【面談所感】</p>
+										<p>＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃
+											＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃
+											＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃
+											＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃
+											＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃
+											＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃
+										</p>
+										<p class="content-head">【本人希望】</p>
+										<div class="text-line">
+											<p class="line-head">現在年収</p>
+											<span>:</span>
+											<p class="line-content">〇〇〇〇〇〇</p>
+										</div>
+										<div class="text-line">
+											<p class="line-head">希望勤務地</p>
+											<span>:</span>
+											<p class="line-content">〇〇〇〇〇〇</p>
+										</div>
+										<div class="text-line">
+											<p class="line-head">入社可能時期</p>
+											<span>:</span>
+											<p class="line-content">〇〇〇〇〇〇</p>
+										</div>
+									</div>
+									<a class="carousel" href="javascript:">閉じる</a>
+									<p class="text bold mT-20">人材紹介会社</p>
+									<p class="text">人材紹介会社名</p>
+								</div>
+								<div class="tab-pane fade job-tab" id="job" role="tabpanel" aria-labelledby="job-tab">
+									<p class="text red">募集期間</p>
+									<p class="text red">2021.4.15まで</p>
+									<p class="text">職種</p>
+									<p class="text">法人営業</p>
+									<p class="text">業界</p>
+									<p class="text">人材サービス</p>
+									<p class="text">年収</p>
+									<p class="text">250~350万円</p>
+									<p class="text">人数</p>
+									<p class="text">１人</p>
+									<p class="text">勤務地</p>
+									<p class="text">東京都</p>
+									<p class="text">最寄駅</p>
+									<p class="text">浜松町駅</p>
+									<p class="text">報酬額</p>
+									<p class="text">理論年収の25％</p>
+								</div>
+							  </div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="card mb-2">
+						<div class="card-title">
+							<span class="icon-holder pR-10"><i class="c-brown-500 ti-book"></i> </span>
+							<span class="title">選考の進捗状況</span>
+						</div>
+						<div class="new-msg-file">
+							<input class="text-input box-shadow" type="text" placeholder="メッセージを入力">
+							<button type="button" class="btn cur-p btn-secondary btn-color">送信</button>
+							<a class="link-add-file" href="#">＋ファイルの添付</a>
+							<p class="text red">※添付ファイルは60日で自動削除されます。</p>
+						</div>
+						<div class="card-body card-body--chat">
+							<div class="chat chat--notification">
+								<div class="notification-title">
+									<span class="icon-holder"><i class="c-brown-500 ti-book"></i> </span>
+									<span class="title"><em>氏名氏名</em> さんが選考を辞退さんが選考を辞退さんが選考を辞退さんが選考を辞退</span>
+								</div>
+								<div class="text-group">
+									<p class="text">辞退理由</p>
+									<p class="text">〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇</p>
+									<p class="text timestamp">2021.3.23 14:15</p>
+								</div>
+							</div>
+							<div class="chat chat--left">
+								<figure class="figure">
+									<img class="img" src="img/avatar2.png" alt="">
+								</figure>
+								<p class="text">〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇</p>
+								<p class="text timestamp">2021.3.23 14:15</p>
+							</div>
+							<div class="chat chat--right">
+								<figure class="figure">
+									<img class="img" src="img/avatar3.png" alt="">
+								</figure>
+								<p class="text">〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇</p>
+								<p class="text timestamp">2021.3.23 14:15</p>
+							</div>
+							<div class="chat chat--notification">
+								<div class="notification-title notification-title--with-logo">
+									<figure class="figure">
+										<img class="img" src="img/avatar3.png" alt="">
+									</figure>
+									<span class="title"> 面接の日程を再提案面接の日程を再提案面接の日程を再提案面接の日程を再提案</span>
+								</div>
+								<div class="text-group">
+									<p class="text">2021年4月7日(水) 15:00〜16:00</p>
+									<p class="text">2021年4月7日(水) 15:00〜16:00</p>
+									<p class="text">2021年4月7日(水) 15:00〜16:00</p>
+									<p class="text">2021年4月7日(水) 15:00〜16:00</p>
+									<p class="text">2021年4月7日(水) 15:00〜16:00</p>
+									<p class="text timestamp">2021.3.23 14:15</p>
+								</div>
+							</div>
+							<div class="chat chat--left">
+								<figure class="figure">
+									<img class="img" src="img/avatar2.png" alt="">
+								</figure>
+								<div class="text-group">
+									<p class="text">〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇</p>
+									<p class="text timestamp">2021.3.23 14:15</p>
+								</div>
+							</div>
+							<div class="chat chat--notification">
+								<div class="notification-title notification-title--with-logo">
+									<figure class="figure">
+										<img class="img" src="img/avatar3.png" alt="">
+									</figure>
+									<span class="title"> 運営事務局から選考結果のリマインドメールが届きました。
+									</span>
+								</div>
+								<p class="text timestamp">2021.3.23 14:15</p>
+							</div>
+							<div class="chat chat--notification">
+								<div class="notification-title notification-title--with-logo">
+									<figure class="figure">
+										<img class="img" src="img/avatar2.png" alt="">
+									</figure>
+									<span class="title"> <em>〇〇</em> さんを紹介</span>
+								</div>
+								<p class="text timestamp">2021.3.23 14:15</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="modal fade" id="selectNotAdoptedReason" tabindex="-1" aria-labelledby="selectNotAdoptedReasonLabel" aria-hidden="true">
+				<div class="modal-dialog modal-dialog-centered modal-lg">
+				  <div class="modal-content">
+					<div class="modal-header no-border justify-content-center">
+						<h5 class="modal-title">落選の最も大きい理由を１つ選択してください。<span class="badge">必須</span></h5>
+					</div>
+					<div class="modal-body pX-40">
+						<div class="row">
+							<div class="col pX-5">
+								<div class="radio-container mY-10" onclick="radio1.click();showSubContent();">
+									<input class="form-check-input" type="radio" name="radio" id="radio1">
+									<label class="form-check-label">
+										能力・経験
+									</label>
+								</div>
+							</div>
+							<div class="col pX-5">
+								<div class="radio-container mY-10" onclick="radio2.click();showSubContent();">
+									<input class="form-check-input" type="radio" name="radio" id="radio2" value="">
+									<label class="form-check-label">
+										志向性・価値観
+									</label>
+								</div>
+							</div>
+							<div class="col pX-5">
+								<div class="radio-container mY-10" onclick="radio3.click();showSubContent();">
+									<input class="form-check-input" type="radio" name="radio" id="radio3" value="">
+									<label class="form-check-label">
+										印象
+									</label>
+								</div>
+							</div>
+							<div class="col pX-5">
+								<div class="radio-container mY-10" onclick="radio4.click();showSubContent();">
+									<input class="form-check-input" type="radio" name="radio" id="radio4" value="">
+									<label class="form-check-label">
+										熱意
+									</label>
+								</div>
+							</div>
+							<div class="col pX-5">
+								<div class="radio-container mY-10" onclick="radio5.click();showSubContent();">
+									<input class="form-check-input" type="radio" name="radio" id="radio5">
+									<label class="form-check-label">
+										定着性
+									</label>
+								</div>
+							</div>
+							<div class="col pX-5">
+								<div class="radio-container mY-10" onclick="radio6.click();showSubContent();">
+									<input class="form-check-input" type="radio" name="radio" id="radio6" value="">
+									<label class="form-check-label">
+										求職者が求める<br>条件と合わなかった
+									</label>
+								</div>
+							</div>
+							<div class="col pX-5">
+								<div class="radio-container mY-10" onclick="radio7.click();showSubContent();">
+									<input class="form-check-input" type="radio" name="radio" id="radio7" value="">
+									<label class="form-check-label">
+										重複・選考済み・選考不成立
+									</label>
+								</div>
+							</div>
+							<div class="col pX-5">
+								<div class="radio-container mY-10" onclick="radio8.click();showSubContent();">
+									<input class="form-check-input" type="radio" name="radio" id="radio8" value="">
+									<label class="form-check-label">
+										弊社都合
+									</label>
+								</div>
+							</div>
+						</div>
+
+						<div class="sub-content">
+							<div class="modal-header no-border justify-content-center">
+								<h5 class="modal-title modal-title--sub">志向性・価値観について当てはまる落選理由を1つ選択してください<span class="badge">必須</span></h5>
+							</div>
+							<div class="row">
+								<div class="col pX-5">
+									<div class="radio-container mY-10 mX-10" onclick="radio9.click()">
+										<input class="form-check-input" type="radio" name="radio2" id="radio9">
+										<label class="form-check-label">
+											将来ビジョンが不明確
+										</label>
+									</div>
+								</div>
+								<div class="col pX-5">
+									<div class="radio-container mY-10 mX-10" onclick="radio10.click()">
+										<input class="form-check-input" type="radio" name="radio2" id="radio10">
+										<label class="form-check-label">
+											就業条件の不一致
+										</label>
+									</div>
+								</div>
+								<div class="col pX-5">
+									<div class="radio-container mY-10 mX-10" onclick="radio11.click()">
+										<input class="form-check-input" type="radio" name="radio2" id="radio11">
+										<label class="form-check-label">
+											転職理由が不明確
+										</label>
+									</div>
+								</div>
+								<div class="col pX-5">
+									<div class="radio-container mY-10 mX-10" onclick="radio12.click()">
+										<input class="form-check-input" type="radio" name="radio2" id="radio12">
+										<label class="form-check-label">
+											求める人物像・社風との不一致
+										</label>
+									</div>
+								</div>
+								<div class="col pX-5">
+									<div class="radio-container mY-10 mX-10" onclick="radio13.click()">
+										<input class="form-check-input" type="radio" name="radio2" id="radio13">
+										<label class="form-check-label">
+											その他
+										</label>
+									</div>
+								</div>
+							</div>
+							<p class="text mT-20 mX-10 mB-0">落選理由の詳細があれば記入してください</p>
+							<textarea class="textarea mX-0 p-10" rows="6"></textarea>
+						</div>
+
+						<p class="text mT-10 mB-0">ご入力いただいた内容は、求人票の改善や候補者とのミスマッチ防止に利用いたします。</p>
+					</div>
+
+					<div class="modal-footer">
+						<button type="button" class="col btn btn-outline-secondary" data-bs-dismiss="modal">キャンセル</button>
+						<button type="button" class="col btn btn-send">送信する</button>
+					</div>
+				  </div>
+				</div>
+			  </div>
+
+			<div class="modal fade" id="passSelectionModal" tabindex="-1" aria-hidden="true">
+				<div class="modal-dialog modal-dialog-centered modal-lg">
+					<div class="modal-content">
+						<div class="modal-header justify-content-start align-items-center">
+							<span class="icon-holder mT-5"><i class="ti-briefcase"></i> </span>
+							<h5 class="mL-10 modal-title">選考結果「選考通過」</h5>
+							<button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body pX-20">
+							<div class="row mX-0 mY-10">
+								<div class="col-lg-3 col-md-4 pL-0 pY-5">
+									次回の選考フェーズ<span class="badge">必須</span>
+								</div>
+								<select class="box-shadow col-lg-5 col-md-6 p-5">
+									<option>選択する</option>
+								</select>
+							</div>
+							<div class="row mX-0 mY-10">
+								<div class="col-lg-3 col-md-4 pL-0 pY-5">
+									現状の評価<span class="badge">必須</span>
+								</div>
+								<select class="box-shadow col-lg-5 col-md-6 p-5">
+									<option value="">選択する</option>
+									<option value="A">[A] 高評価</option>
+									<option value="B">[B] 良い</option>
+									<option value="C">[C] 可</option>
+									<option value="D">[D] 懸念点がある</option>
+								</select>
+							</div>
+							<div class="row mX-0 mY-10">
+								<div class="col-lg-3 col-md-4 pL-0 pY-5">
+									評価点<span class="badge">必須</span>
+								</div>
+								<textarea class="box-shadow col-lg-9 col-md-8 p-5" rows="5"></textarea>
+							</div>
+							<div class="row mX-0 mY-10">
+								<div class="col-lg-3 col-md-4 pL-0 pY-5">
+									懸念点<span class="badge">必須</span>
+								</div>
+								<textarea class="box-shadow col-lg-9 col-md-8 p-5" rows="8"></textarea>
+							</div>
+							<p class="text mT-10 float-right ta-l">
+								紹介料：理論年収の〇〇〇〇<br>
+								採用事務手数料：上記紹介料の20%（上限15万円）
+							</p>
+						</div>
+
+						<div class="modal-footer">
+							<button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">キャンセル</button>
+							<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="passSelectionModal2" data-bs-dismiss="modal">確定して次へ進む</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="modal fade" id="passSelectionModal2" tabindex="-1" aria-hidden="true">
+				<div class="modal-dialog modal-dialog-centered modal-lg">
+					<div class="modal-content">
+						<div class="modal-header justify-content-start align-items-center">
+							<span class="icon-holder mT-5"><i class="ti-briefcase"></i> </span>
+							<h5 class="mL-10 modal-title">面接詳細の入力</h5>
+							<button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body pX-20">
+							<div class="row mX-0 mY-10">
+								<div class="col-md-4 pL-0 pY-5">
+									面接担当者名<span class="badge">必須</span>
+								</div>
+								<input class="box-shadow col-md-8 p-5" type="text">
+							</div>
+							<div class="row mX-0 mY-10">
+								<div class="col-md-4 pL-0 pY-5">
+									面接場所住所<span class="badge">必須</span>
+								</div>
+								<input class="box-shadow col-md-8 p-5" type="text">
+							</div>
+							<div class="row mX-0 mY-10">
+								<div class="col-md-4 pL-0 pY-5">
+									持ち物<span class="badge">必須</span>
+								</div>
+								<input class="box-shadow col-md-8 p-5" type="text">
+							</div>
+							<div class="row mX-0 mY-10">
+								<div class="col-md-4 pL-0 pY-5">
+									緊急連絡先（転職者様のみご利用可）<span class="badge">必須</span>
+								</div>
+								<input class="box-shadow col-md-8 p-5" type="text">
+							</div>
+							<div class="row mX-0 mY-10">
+								<div class="col-md-4 pL-0 pY-5">
+									その他特記事項<span class="badge blue">任意</span>
+								</div>
+								<textarea class="box-shadow col-md-8 p-5" rows="6"></textarea>
+							</div>
+						</div>
+
+						<div class="modal-footer align-items-stretch">
+							<button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">キャンセル</button>
+							<button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" data-toggle="modal" data-target="#offerScheduleModal">面接詳細を登録して候補者に日程候補日を提示してもらう</button>
+							<button type="button" class="btn btn-primary">面接詳細を登録して日程を提示する</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="modal fade" id="offerScheduleModal" tabindex="-1" aria-hidden="true">
+				<div class="modal-dialog modal-dialog-centered modal-md">
+					<div class="modal-content">
+						<div class="modal-header justify-content-start">
+							<span class="icon-holder mT-5"><i class="ti-briefcase"></i> </span>
+							<h5 class="mL-10 modal-title">候補者に日程の希望日を提示してもらいます。</h5>
+							<button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body pX-10">
+							<p class="mL-10">依頼すると、先に候補者より希望の日程を提示してもらい、その候補日の中から選んで日程を決めることができます。</p>
+						</div>
+						<div class="modal-footer align-items-stretch">
+							<button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">キャンセル</button>
+							<button type="button" class="btn btn-primary">依頼する</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="modal fade" id="issueScheduleModal" tabindex="-1" aria-hidden="true">
+				<div class="modal-dialog modal-dialog-centered modal-md">
+					<div class="modal-content">
+						<div class="modal-header justify-content-start">
+							<span class="icon-holder mT-5"><i class="ti-briefcase"></i> </span>
+							<h5 class="mL-10 modal-title">オファー面談の申し込みと日程の提示</h5>
+							<button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body pX-10">
+							<p class="mL-10">
+								開始すると、オファー面談の申し込みと同時に、面談日程の提示を行うための日程調整画面に移ります。
+							</p>
+							<p class="mL-10 red">
+								※オファー面談を開始すると面談が終了するまで入社条件の提示ができなくなりますのでご注意ください。
+							</p>
+						</div>
+						<div class="modal-footer align-items-stretch">
+							<button type="button" class="col btn btn-outline-secondary" data-bs-dismiss="modal">キャンセル</button>
+							<button type="button" class="col btn btn-primary">依頼する</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="modal fade" id="joiningConditionModal" tabindex="-1" aria-hidden="true">
+				<div class="modal-dialog modal-dialog-centered modal-lg">
+					<div class="modal-content">
+						<div class="modal-header justify-content-start align-items-center">
+							<span class="icon-holder mT-5"><i class="ti-briefcase"></i> </span>
+							<h5 class="mL-10 modal-title">入社条件を提示</h5>
+							<button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body pX-10">
+							<p>後ほど更新することもできます。</p>
+							<div class="row mX-0 mY-10">
+								<div class="col-md-4 pL-0 pY-5">
+									オファー金額（円）<span class="badge">必須</span>
+								</div>
+								<label class="col-md-8">
+									年収
+									<input class="box-shadow mX-10 w-75 p-5" type="text">
+									円<br>
+									<p class="justify-content-center mB-0">内定通知書に記入予定の年収を記入してください</p>
+								</label>
+							</div>
+							<div class="row mX-0 mY-10">
+								<div class="col-md-4 pL-0 pY-5">
+									初日出勤日<span class="badge">必須</span>
+								</div>
+								<input class="box-shadow col-md-7 p-5" type="text" value="" id="datepicker">
+							</div>
+							<div class="row mX-0 mY-10">
+								<div class="col-md-4 pL-0 pY-5">
+									返答期限<span class="badge">必須</span>
+								</div>
+								<input class="box-shadow col-md-7 p-5" type="text" value="" id="datepicker2">
+							</div>
+							<div class="row mX-0 mY-10">
+								<div class="col-md-4 pL-0 pY-5">
+									入社手続きに必要な書類<span class="badge blue">任意    </span>
+								</div>
+								<div class="col-md-8 p-5">
+									<button type="button" class="btn btn-primary" disabled>書類をアップロード</button>
+									<p>＋書類を追加する</p>
+									<p>
+										※内定通知、労働条件通知書、入社承諾書など<br>
+										※PDF各ファイル　５MBまで
+									</p>
+								</div>
+							</div>
+						</div>
+						<div class="modal-footer align-items-stretch">
+							<button type="button" class="col btn btn-outline-secondary" data-bs-dismiss="modal">キャンセル</button>
+							<button type="button" class="col btn btn-primary">送信</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="modal fade" id="refundApplicationModal" tabindex="-1" aria-hidden="true">
+				<div class="modal-dialog modal-dialog-centered modal-lg">
+					<div class="modal-content">
+						<div class="modal-header justify-content-start align-items-center">
+							<span class="icon-holder"><i class="ti-briefcase"></i> </span>
+							<h5 class="mL-10 modal-title">返金規定期間内での退職による返金申請</h5>
+							<button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body pX-40">
+							<div class="prompt pT-20">
+								<p class="icon">!</p>
+								<p class="text ta-l">
+									返金規定の期間内に退職した場合は、こちらから人材紹介エージェントへ紹介成功報酬の返金申請をしてください。<br>
+									申請後は選考画面の「人材紹介タイムライン」よりエージェントと直接やり取りをお願い致します。<br>
+									人材紹介エージェントが同意した場合にのみ返金となります。<br>
+									<i>※紹介成功報酬の返金は当社からではなく、人材紹介エージェントより直接行われます。<br>
+									※紹介成功報酬および採用事務手数料を当社へお支払いする前の場合、全額お支払いいただいた後に人材紹介エージェントから返金される流れになります。返金分を減額してのお支払い対応はシステム上できかねますのでご了承ください。<br>
+									※当社にお支払いいただいた採用事務手数料については返金の対象外となりますのでご了承ください。</i>
+								</p>
+							</div>
+							<div class="mX-20 mY-20">
+								<div class="row">
+									<p class="col-md-4">求人タイトル</p>
+									<p class="col-md-8">求人タイトル名求人タイトル名求人タイトル名求人タイトル名</p>
+								</div>
+								<div class="row">
+									<p class="col-md-4">対象者</p>
+									<p class="col-md-8">鈴木 一郎</p>
+								</div>
+								<div class="row">
+									<p class="col-md-4">入社日（初日出勤日）</p>
+									<p class="col-md-8">2021年 01月 01日</p>
+								</div>
+								<div class="row">
+									<p class="col-md-4">採用時年収</p>
+									<p class="col-md-8">4,000,000円</p>
+								</div>
+							</div>
+							<div class="mY-20 bgc-grey-200 p-20">
+								<div class="row">
+									<p class="col-md-4">この求人の返済規定</p>
+									<p class="col-md-8">
+										１ヶ月以内：75％<br>
+										1ヶ月を超えて3ヶ月以内：50％
+									</p>
+								</div>
+							</div>
+							<div class="row mT-20">
+								<div class="col-md-4 pL-0 pY-5">
+									退職日<span class="badge">必須</span>
+								</div>
+								<input class="col-md-6"type="text" value="" id="datepicker3">
+							</div>
+						</div>
+						<div class="modal-footer justify-content-between mX-40">
+							<button type="button" class="col btn btn-outline-secondary" data-bs-dismiss="modal">キャンセル</button>
+							<button type="button" class="col btn btn-primary">送信</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+		<footer class="bdT ta-c p-30 lh-0 fsz-sm c-grey-600">
+			<span>Copyright © inCul co.,ltd ALL rights reserved.</span>
+		</footer>
+	</div>
+</div>
+<!-- Scripts -->
+<!-- <script src="js/detail.js"></script> -->
+<script src="js/loader.js"></script>
+<script type="text/javascript" src="vendor.js"></script>
+<script type="text/javascript" src="bundle.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="libs/datapicker/js/bootstrap-datepicker.js"></script>
+
+<script type="text/javascript">
+
+	const slider = document.querySelector('.breadcrumb');
+	let isDown = false;
+	let startX;
+	let scrollLeft;
+
+	slider.addEventListener('mousedown', (e) => {
+		isDown = true;
+		slider.classList.add('active');
+		startX = e.pageX - slider.offsetLeft;
+		scrollLeft = slider.scrollLeft;
+
+	});
+	slider.addEventListener('mouseleave', () => {
+		isDown = false;
+		slider.classList.remove('active');
+	});
+	slider.addEventListener('mouseup', () => {
+		isDown = false;
+		slider.classList.remove('active');
+	});
+	slider.addEventListener('mousemove', (e) => {
+		if(!isDown) return;
+		e.preventDefault();
+		const x = e.pageX - slider.offsetLeft;
+		const walk = (x - startX) * 1; //scroll-fast
+		slider.scrollLeft = scrollLeft - walk;
+	});
+
+	$(".breadcrumb__step").on("click", function() {
+		$(".breadcrumb__step").each(function(idx,el) {
+			$(this).removeClass('breadcrumb__step--active');
+		});
+
+		$(this).addClass('breadcrumb__step--active');
+	});
+
+	$(".carousel-area").css('max-height', 1500);
+	$(".seeker-tab .carousel").click(function() {
+		let isCollapsed = $(this).attr('data-collapsed');
+		let seekerTab = $(".carousel-area");
+
+		if (isCollapsed != 0) {
+			seekerTab.css('max-height', "170px");
+			$(this).html('もっと見る');
+			$(this).attr('data-collapsed', 0);
+		} else {
+			seekerTab.css('max-height', "600px");
+			$(this).html('閉じる');
+			$(this).attr('data-collapsed', 1);
+		}
+	});
+
+	autoScrollBreadcrumb();
+	function autoScrollBreadcrumb() {
+		let id = $(".breadcrumb__step--active").data('id');
+		slider.scrollLeft = 900 / 11.0 * (id - 1);
+	}
+
+	function showSubContent() {
+		$("#selectNotAdoptedReason .sub-content").css('max-height', 800);
+	}
+
+	$('#datepicker').datepicker({
+		format: 'yyyy-mm-dd'
+	});
+	$('#datepicker2').datepicker({
+		format: 'yyyy-mm-dd'
+	});
+	$('#datepicker3').datepicker({
+		format: 'yyyy-mm-dd'
+	});
+
+</script>
+
+</body>
+</html>
