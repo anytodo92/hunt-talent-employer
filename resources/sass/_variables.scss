@@ -1,0 +1,179 @@
+// Body
+$body-bg: #f8fafc;
+
+// Typography
+$font-family-sans-serif: 'Nunito', sans-serif;
+$font-size-base: 0.9rem;
+$line-height-base: 1.6;
+$font-serif: 'Noto Serif JP', serif;
+$font-main: Roboto,-apple-system,system-ui,Segoe UI,Ubuntu,Cantarell,Noto Sans,sans-serif;
+
+// Colors
+$blue: #3490dc;
+$indigo: #6574cd;
+$purple: #9561e2;
+$pink: #f66d9b;
+$red: #e3342f;
+$orange: #f6993f;
+$yellow: #ffed4a;
+$green: #38c172;
+$teal: #4dc0b5;
+$cyan: #6cb2eb;
+
+@mixin strok-letter($strock-color, $basic-color) {
+    color: $strock-color;
+    -webkit-text-fill-color: $basic-color;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: $strock-color;
+}
+
+@mixin flex-center {
+    @include display-flex();
+    @include align-items-center();
+    @include justify-content-center();
+}
+
+@mixin flex-center-v {
+    @include display-flex();
+    @include align-items-center();
+}
+
+@mixin display-flex {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+}
+
+@mixin align-items-center {
+    @include align-items(center);
+}
+
+@mixin align-items-flex-start {
+    @include align-items(flex-start);
+}
+
+@mixin align-items($v) {
+    -webkit-box-align: $v;
+    -webkit-flex-align: $v;
+    -ms-flex-align: $v;
+    -webkit-align-items: $v;
+    align-items: $v;
+}
+
+@mixin justify-content-center {
+    @include justify-content(center);
+}
+
+@mixin justify-content-space-evenly {
+    @include justify-content(space-evenly);
+}
+
+@mixin justify-content-space-around {
+    @include justify-content(space-around);
+    -webkit-box-pack: distribute;
+    -ms-flex-pack: distribute;
+}
+
+@mixin justify-content-space-between {
+    @include justify-content(space-between);
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+}
+
+@mixin justify-content-flex-start {
+    @include justify-content(flex-start);
+    -webkit-box-pack: start;
+}
+
+@mixin justify-content-flex-end {
+    @include justify-content(flex-end);
+    -webkit-box-pack: end;
+}
+
+@mixin justify-content($v) {
+    -webkit-box-pack: $v;
+    -webkit-justify-content: $v;
+    -ms-flex-pack: $v;
+    -moz-box-pack: $v;
+    justify-content: $v;
+}
+
+@mixin flex-direction-row {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+}
+
+@mixin flex-direction-column {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -moz-box-orient: vertical;
+    -moz-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+
+@mixin flex-direction-row-reverse {
+    -webkit-box-direction: reverse;
+    -moz-box-direction: reverse;
+    -ms-flex-direction: row-reverse;
+    flex-direction: row-reverse;
+}
+
+@mixin flex-direction-column-reverse {
+    -webkit-box-direction: reverse;
+    -moz-box-direction: reverse;
+    -ms-flex-direction: column-reverse;
+    flex-direction: column-reverse;
+}
+
+@mixin flex-wrap-wrap {
+    @include flex-wrap(wrap);
+}
+
+@mixin flex-wrap($v) {
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+@mixin transition-none {
+    -webkit-transition: none;
+    -o-transition: none;
+    transition: none;
+}
+
+@mixin transition($attr, $sec, $ease) {
+    -webkit-transition: $attr $sec $ease;
+    -o-transition: $attr $sec $ease;
+    transition: $attr $sec $ease;
+}
+
+@mixin transition-all {
+    @include transition(all, 0.3s, ease);
+}
+
+@mixin transform($v) {
+    -webkit-transform: $v;
+    -ms-transform: $v;
+    transform: $v;
+}
+
+@mixin flex($v) {
+    -webkit-flex: $v;
+    -webkit-box-flex: $v;
+    -webkit-flex: $v;
+    -moz-box-flex: $v;
+    -ms-flex: $v;
+    flex: $v;
+}
+
+@mixin clip-path($v) {
+    -webkit-clip-path: $v;
+    clip-path: $v;
+}
